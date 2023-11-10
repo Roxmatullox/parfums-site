@@ -42,8 +42,10 @@ const AllProducts = () => {
 
   const handleSearch = (str : string)=>{
     setSearch(str)
-    console.log(str);
-    
+  }
+
+  const priceSorting = (sort : string)=>{
+    setSort(sort)
   }
 
   return (
@@ -53,6 +55,21 @@ const AllProducts = () => {
         <div className="container">
           <div className="search-container">
             <input onChange={(e)=>handleSearch(e.target.value)} type="text" placeholder="Search..." />
+            <select onChange={(e)=>priceSorting(e.target.value)} name="price-sort">
+              <option value="">Default</option>
+              <option value="price">Increace</option>
+              <option value="-price">Decreace</option>
+            </select>
+            <select onChange={(e)=>priceSorting(e.target.value)} name="price-sort">
+              <option value="">Default</option>
+              <option value={`""`}>Latest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+            <select onChange={(e)=>priceSorting(e.target.value)} name="price-sort">
+              <option value="">Default</option>
+              <option value={`sold`}>Bestsellers</option>
+              <option value="-sold">Least sold</option>
+            </select>
           </div>
         </div>
       </section> 
