@@ -1,20 +1,19 @@
 "use client"
 
 import React from 'react'
-import { Button } from 'react-bootstrap'
+
+import { Button } from "@mui/material";
 
 const NavigateToLogin = () => {
 
   const navigate = true
 
   if (navigate) {
-    window.location.replace("/user")
+    window.location.replace("/login")
   }
 
   return (
-    <div>
-      <Button color='secondary' variant='contained' href="/user">Get started</Button>
-    </div>
+    <Button color='secondary' variant='contained' href="/login">Get started</Button>
   )
 }
 

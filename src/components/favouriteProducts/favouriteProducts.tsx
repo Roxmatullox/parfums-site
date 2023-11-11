@@ -7,11 +7,11 @@ import Cookies from "js-cookie"
 import Image from "next/image"
 
 import "./favouriteProducts.scss";
+import useCart from "@/zustand/cart"
 
 const FavouriteProducts = () => {
 
-  const [refresh , setRefresh] = useState(false)
-
+  const {refresh , setRefresh} = useCart()
 
   const JsonCart = Cookies.get("cart")
 

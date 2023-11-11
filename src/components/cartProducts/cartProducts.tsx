@@ -5,10 +5,11 @@ import Cookies from 'js-cookie'
 import Product from '@/types/product'
 
 import "./cartProduct.scss"
+import useCart from '@/zustand/cart'
 
 const CartProducts = () => {
 
-  const [refresh , setRefresh] = useState(false)
+  const {refresh , setRefresh} = useCart()
 
   const JsonCart = Cookies.get("cart")
   

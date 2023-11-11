@@ -1,5 +1,5 @@
-
 import NavigateToLogin from '@/components/navigateToLogin/navigateToLogin';
+import Button from '@mui/material/Button';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 }
 
 const page = () => {
-
   return (
     <main id="home">
       <div className="container">

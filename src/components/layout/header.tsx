@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
+import useCart from '@/zustand/cart';
 
 
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
@@ -45,22 +46,19 @@ function HomeHeader() {
 
 
   let location = usePathname()
-  let locationForPages = usePathname()
-
-  console.log(location);
-  
 
   location = location.slice(0 , 5)
 
   const JsonCart = Cookies.get("cart")
+
+  const [StorageProducts , setStorageProducts] = useState(JsonCart ? JSON.parse(JsonCart) : null)
   
-  const StorageProducts =  JsonCart ? JSON.parse(JsonCart) : null
-  
-  const [refresh , setRefresh] = useState(false)
+  const {refresh}= useCart()
 
   useEffect(()=>{
-    setRefresh(!refresh)
-  } , [StorageProducts , refresh])
+    setStorageProducts(JsonCart ? JSON.parse(JsonCart) : null)
+  } , [refresh])
+  
 
   return (
     <AppBar color='secondary' position="fixed">

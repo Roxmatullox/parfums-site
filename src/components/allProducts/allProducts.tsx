@@ -3,15 +3,17 @@
 import request from "@/server/request";
 import Product from "@/types/product";
 import { useEffect, useState } from "react";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import Cookies from "js-cookie"
 
 import "./allProducts.scss"
 import Image from "next/image";
+import useCart from "@/zustand/cart";
+import storeProduct from "@/types/storeCartProduct";
 
 const AllProducts = () => {
+
+  const {refresh , setRefresh} = useCart()
 
   const [products , setProducts] = useState<null | Product[]>(null)
   const [total , setTotal] = useState(0)
@@ -22,7 +24,6 @@ const AllProducts = () => {
   const [sort , setSort] = useState("")
   const [active , setActive] = useState(1)
   
-  const [refresh , setRefresh] = useState(false)
 
   useEffect(()=>{
     const getProducts = async ()=>{
@@ -52,16 +53,13 @@ const AllProducts = () => {
     setSort(sort)
   }
 
+
   // Cart
 
   const JsonCart = Cookies.get("cart")
 
   const StorageProducts =  JsonCart ? JSON.parse(JsonCart) : null
 
-  interface storeProduct {
-    el: Product
-    quantity : number
-  }
 
   const handleQuantity = async (el : Product)=>{
     const Cartproducts = StorageProducts || []
@@ -111,6 +109,8 @@ const AllProducts = () => {
   }
 
 
+
+
   // Favourite
 
 
@@ -123,13 +123,13 @@ const AllProducts = () => {
     const Favourites = StorageFavourites || []
     Favourites.push(el)
     Cookies.set("favourite" , JSON.stringify(Favourites))
-    setRefresh(!refresh)
+    // setRefresh(!refresh)
   }
 
   const handleNoFavourite= (el2 : Product)=>{
     const Favourites = StorageFavourites.filter((el : Product)=>el._id !== el2._id)
     Cookies.set("favourite" , JSON.stringify(Favourites))
-    setRefresh(!refresh)
+    // setRefresh(!refresh)
   }
 
   const favouriteBtn = (el2 : Product)=>{
@@ -212,10 +212,7 @@ const AllProducts = () => {
                     }
                     {
                       StorageProducts ? <>{
-                        cartBtn(el)
-                        // StorageProducts.find((el2 : storeProduct)=>el2.el._id === el._id) ?
-                        // <button key={el._id}>Go to cart</button> :
-                        //  <button key={el._id} onClick={()=>handleQuantity(el)}>Add to cart</button>                       
+                        cartBtn(el)                       
                         }</> : <button key={el._id} onClick={()=>handleQuantity(el)}>Add to cart</button>
                     }
                   </div>
