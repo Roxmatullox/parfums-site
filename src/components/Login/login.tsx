@@ -9,13 +9,13 @@ const Login = () => {
   
   const {login , isLogin , role} = useAuth()
 
-  if (isLogin) {
-    if (role === 1) {
-      window.location.replace("/admin")
-    } else{
-      window.location.replace("/user")
-    }
-  }
+  // if (isLogin) {
+  //   if (role === 1) {
+  //     window.location.replace("/admin")
+  //   } else{
+  //     window.location.replace("/user")
+  //   }
+  // }
 
   return (
     <div className="login">
