@@ -32,6 +32,10 @@
     margin-right: 2px;
   }
 
+  p{
+    margin-bottom: 0 !important;
+  }
+
   span{
     padding: 12px 15px;
     border-radius: 5px;
@@ -40,6 +44,31 @@
     color: white;
     height: 100% !important;
     margin-right: 2px;
+  }
+}
+
+.all-products-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width : 1200px) {
+    &{
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.product-card{
+  display: flex;
+  justify-content: space-between;align-items: center;
+  border: 1px solid #9c27b0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+
+  *{
+    color: black !important;
   }
 }
 

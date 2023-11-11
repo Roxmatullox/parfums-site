@@ -50,21 +50,11 @@ const CartProducts = () => {
     <>
       <div className="cart">
         <div className="container">
-          {
             <h1>Cart products {`(${StorageProducts?.length || "0"})`}</h1>
-          }
           <div className="cart-products">
             {
               StorageProducts ? StorageProducts.map((el : storeProduct)=>{
-                return <div style={{
-                  display:"flex",
-                  justifyContent:"space-between",
-                  alignItems:"center",
-                  border:"1px solid #9c27b0",
-                  padding:"10px",
-                  borderRadius:"10px",
-                  marginBottom:"20px"
-                }} key={el.el._id}>
+                return <div className='product-card' key={el.el._id}>
                   <div style={{
                     display:'flex',
                     alignItems:"center",

@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,8 +15,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { usePathname } from 'next/navigation';
+import Cookies from 'js-cookie';
 
-const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
+
+const userPages = ['products', 'about', 'contact' , 'cart' , 'favorite' , 'orders'];
 const adminPages = ['Products', 'Pricing', 'Blog'];
 const startPages = ['Products', 'Pricing', 'Blog'];
 
@@ -49,7 +51,17 @@ function HomeHeader() {
   
 
   location = location.slice(0 , 5)
-    
+
+  const JsonCart = Cookies.get("cart")
+  
+  const StorageProducts =  JsonCart ? JSON.parse(JsonCart) : null
+  
+  const [refresh , setRefresh] = useState(false)
+
+  useEffect(()=>{
+    setRefresh(!refresh)
+  } , [StorageProducts , refresh])
+
   return (
     <AppBar color='secondary' position="fixed">
       {
@@ -335,20 +347,39 @@ function HomeHeader() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {userPages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseUserMenu}>
-                  <Button
-                  href={`/user/${page}`}
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  style={{
-                    color:"black"
-                  }}
-                >
-                  {page}
-                </Button>
-              </MenuItem>
-              ))}
+              {userPages.map((page) => {
+                if (page === "cart") {
+                  return (
+                    <MenuItem key={page} onClick={handleCloseUserMenu}>
+                      <Button
+                      href={`/user/${page}`}
+                      key={page}
+                      onClick={handleCloseNavMenu}
+                      style={{
+                        color:"black"
+                      }}
+                    >
+                      {StorageProducts.length > 0 ? `${page} (${StorageProducts.length})` : `${page}` }
+                    </Button>
+                  </MenuItem>
+                  )
+                } else {
+                  return (
+                    <MenuItem key={page} onClick={handleCloseUserMenu}>
+                      <Button
+                      href={`/user/${page}`}
+                      key={page}
+                      onClick={handleCloseNavMenu}
+                      style={{
+                        color:"black"
+                      }}
+                    >
+                      {page}
+                    </Button>
+                  </MenuItem>
+                  )
+                }
+                })}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -371,16 +402,39 @@ function HomeHeader() {
             User
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {userPages.map((page) => (
-              <Button
-                href={`/user/${page}`}
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            {userPages.map((page) => {
+              if (page === "cart") {
+                return (
+                  <MenuItem key={page} onClick={handleCloseUserMenu}>
+                    <Button
+                    href={`/user/${page}`}
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    style={{
+                      color:"black"
+                    }}
+                  >
+                    {StorageProducts.length > 0 ? `${page} (${StorageProducts.length})` : `${page}` }
+                  </Button>
+                </MenuItem>
+                )
+              } else {
+                return (
+                  <MenuItem key={page} onClick={handleCloseUserMenu}>
+                    <Button
+                    href={`/user/${page}`}
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    style={{
+                      color:"black"
+                    }}
+                  >
+                    {page}
+                  </Button>
+                </MenuItem>
+                )
+              }
+            })}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

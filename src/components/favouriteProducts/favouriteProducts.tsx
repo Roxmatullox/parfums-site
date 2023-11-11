@@ -1,58 +1,17 @@
 "use client"
 
-import request from "@/server/request";
-import Product from "@/types/product";
-import { useEffect, useState } from "react";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import {useState} from "react"
 
+import Product from "@/types/product"
 import Cookies from "js-cookie"
+import Image from "next/image"
 
-import "./allProducts.scss"
-import Image from "next/image";
+import "./favouriteProducts.scss";
 
-const AllProducts = () => {
+const FavouriteProducts = () => {
 
-  const [products , setProducts] = useState<null | Product[]>(null)
-  const [total , setTotal] = useState(0)
-
-  const [totalPaginate , setTotalPaginate] = useState(0)
-
-  const [search , setSearch] = useState("")
-  const [sort , setSort] = useState("")
-  const [active , setActive] = useState(1)
-  
   const [refresh , setRefresh] = useState(false)
 
-  useEffect(()=>{
-    const getProducts = async ()=>{
-      const params = {
-        sort:sort,
-        search:search,
-        page:active,
-        limit:10
-      }
-      try {
-        const {data} = await request.get("product" , {params})
-        setProducts(data.products)
-        setTotal(data.total)
-        setTotalPaginate(Math.ceil(data.total / 10))
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    getProducts()
-  } , [active , search , sort , refresh])
-
-  const handleSearch = (str : string)=>{
-    setSearch(str)
-  }
-
-  const priceSorting = (sort : string)=>{
-    setSort(sort)
-  }
-
-  // Cart
 
   const JsonCart = Cookies.get("cart")
 
@@ -111,7 +70,7 @@ const AllProducts = () => {
   }
 
 
-  // Favourite
+
 
 
   const JsonFavourite = Cookies.get("favourite")
@@ -150,35 +109,14 @@ const AllProducts = () => {
   }
 
 
+
   return (
-    <div>
+    <div className="favourite">
       <div className="container">
-        <h1>Products ({total})</h1>
-      <section id="search">
-        <div className="container">
-          <div className="search-container">
-            <input onChange={(e)=>handleSearch(e.target.value)} type="text" placeholder="Search..." />
-            <select onChange={(e)=>priceSorting(e.target.value)} name="price-sort">
-              <option value="">Default</option>
-              <option value="price">Increace</option>
-              <option value="-price">Decreace</option>
-            </select>
-            <select onChange={(e)=>priceSorting(e.target.value)} name="price-sort">
-              <option value="">Default</option>
-              <option value={`""`}>Latest</option>
-              <option value="oldest">Oldest</option>
-            </select>
-            <select onChange={(e)=>priceSorting(e.target.value)} name="price-sort">
-              <option value="">Default</option>
-              <option value={`sold`}>Bestsellers</option>
-              <option value="-sold">Least sold</option>
-            </select>
-          </div>
-        </div>
-      </section> 
-        <div className="all-products-container">
+      <h1>Favorite products {`(${StorageFavourites?.length || "0"})`}</h1>
+        <div className="favourite-products">
           {
-            products ? products.map((el)=>{
+            StorageFavourites ? StorageFavourites.map((el : Product)=>{
               return (
                 <div className="product-card" key={el._id}>
                   <div style={{
@@ -224,20 +162,9 @@ const AllProducts = () => {
             }) : <></>
           }
         </div>
-        {
-            totalPaginate > 1 ? <section id="pagination">
-            <div className="container">
-              <div className="pagination-btns">
-                <button disabled={active === 1 ? true : false} onClick={()=>{setActive(active-1)}}>{"<"}</button>
-                <span>{active}</span>
-                <button disabled={totalPaginate === active ? true : false} onClick={()=>{setActive(active+1)}}>{">"}</button>
-              </div>
-            </div>
-          </section> : null
-          }
       </div>
     </div>
   )
 }
 
-export default AllProducts
+export default FavouriteProducts

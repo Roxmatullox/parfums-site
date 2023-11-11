@@ -1,7 +1,16 @@
-.product-card-right{
+.product-card{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;align-items: center;
+  border: 1px solid #9c27b0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 10px;
+
+  *{
+    color: black !important;
+  }
+
   button{
     padding: 10px 15px;
     border-radius: 5px;
@@ -21,18 +30,14 @@
     height: 100% !important;
     margin-right: 2px;
   }
-}
 
-.product-card{
-  display: flex;
-  justify-content: space-between;align-items: center;
-  border: 1px solid #9c27b0;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  background-color: white;
+  .product-card-right{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
 
-  *{
-    color: black !important;
+  p{
+    margin-bottom: 0 !important;
   }
 }
