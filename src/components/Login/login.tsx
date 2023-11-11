@@ -12,11 +12,14 @@ const Login = () => {
 
   const router = useRouter()
 
+  console.log(router);
+  
+
   if (isLogin) {
     if (role === 1) {
-      router.push("/admin")
+      router.replace("/admin")
     } else{
-      router.push("/user")
+      router.replace("/user")
     }
   }
 

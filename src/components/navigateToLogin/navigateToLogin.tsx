@@ -12,7 +12,7 @@ const NavigateToLogin = () => {
   const navigate = true
 
   if (navigate) {
-    router.push("/login")
+    router.replace("/login")
   }
 
   return (
