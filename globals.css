@@ -14,14 +14,13 @@ a {
 
 
 #home{
-  width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
   background-image: url("./src/assets/background.gif");
-
 }
 #home .get-started{
-  width: 100%;
-  height: 100vh;
+  max-width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,6 +31,7 @@ main{
   min-height: 100vh;
   background-image: url("./src/assets/background.gif") ;
   background-position: 100%;
+  padding-bottom: 40px;
   >*{
     color: white;
   }

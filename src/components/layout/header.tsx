@@ -18,7 +18,7 @@ import { usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 
 
-const userPages = ['products', 'about', 'contact' , 'cart' , 'favorite' , 'orders'];
+const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
 const adminPages = ['Products', 'Pricing', 'Blog'];
 const startPages = ['Products', 'Pricing', 'Blog'];
 

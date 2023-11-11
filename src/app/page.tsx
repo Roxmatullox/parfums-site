@@ -1,5 +1,5 @@
 
-import Button from '@mui/material/Button';
+import NavigateToLogin from '@/components/navigateToLogin/navigateToLogin';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ const page = () => {
     <main id="home">
       <div className="container">
         <div className="get-started">
-          <Button color='secondary' variant='contained' href="/user">Get started</Button>
+          <NavigateToLogin />
         </div>
       </div>
     </main>

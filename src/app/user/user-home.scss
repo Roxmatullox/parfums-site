@@ -3,17 +3,46 @@
 
 
 .home-section-resourses{
-  height: 70vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding-top: 20px;
 
+  @media (max-width:1000px) {
+    &{
+      grid-template-columns: 1fr;
+    }
+  }
+
   >div{
     border: 1px solid #9c27b0;
     border-radius: 10px;
     text-align: center;
+    max-height: 400px;
+    background-color: white;
     padding: 10px;
+    *{
+      color: black !important;
+    }
+
+    button{
+      background-color: black !important;
+      margin-top: 10px !important;
+    }
+
+    .carousel-control-next-icon{
+      background-color: black !important;
+      border-radius: 50%;
+    }
+
+    .carousel-control-prev-icon{
+      background-color: black !important;
+      border-radius: 50%;
+    }
+
+    >img{
+      border-radius: 10px;
+    }
 
     >div{
       height: 90%;
