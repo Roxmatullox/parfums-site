@@ -10,18 +10,18 @@ const Login = () => {
   
   const {login , isLogin , role} = useAuth()
 
-  const router = useRouter()
+  // const router = useRouter()
 
-  console.log(router);
+  // console.log(router);
   
 
-  if (isLogin) {
-    if (role === 1) {
-      router.replace("/admin")
-    } else{
-      router.replace("/user")
-    }
-  }
+  // if (isLogin) {
+  //   if (role === 1) {
+  //     router.replace("/admin")
+  //   } else{
+  //     router.replace("/user")
+  //   }
+  // }
 
   return (
     <div className="login">
