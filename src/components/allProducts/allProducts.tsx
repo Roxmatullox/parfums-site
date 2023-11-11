@@ -123,13 +123,13 @@ const AllProducts = () => {
     const Favourites = StorageFavourites || []
     Favourites.push(el)
     Cookies.set("favourite" , JSON.stringify(Favourites))
-    // setRefresh(!refresh)
+    setRefresh(!refresh)
   }
 
   const handleNoFavourite= (el2 : Product)=>{
     const Favourites = StorageFavourites.filter((el : Product)=>el._id !== el2._id)
     Cookies.set("favourite" , JSON.stringify(Favourites))
-    // setRefresh(!refresh)
+    setRefresh(!refresh)
   }
 
   const favouriteBtn = (el2 : Product)=>{

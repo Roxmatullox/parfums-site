@@ -16,7 +16,7 @@ const StorageProducts =  JsonCart ? JSON.parse(JsonCart) : null
 const useCart = create<CartInterface>()((set , get)=>({
   refresh : false ,
   setRefresh:(ref)=>{
-    set({refresh : ref})
+    set({refresh : ref})    
   }
 }))
 

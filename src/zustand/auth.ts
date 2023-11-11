@@ -36,6 +36,7 @@ const useAuth = create<AuthInterface>()((set , get) => ({
   },
 
   register : async (e)=>{
+    e.preventDefault()
     try {
       const values = {
         firstName : e.currentTarget.firstName.value,
@@ -47,20 +48,19 @@ const useAuth = create<AuthInterface>()((set , get) => ({
       }
 
       console.log(values);
-      
-      // if (values.confirmPassword === values.password) {
-      //   const {data} = await request.post("auth/register" , values)
-      //   set((state)=>({...state , isLogin : true , role : data.user.role}))      
-      //   Cookies.set("isLogin" , data.token)
-      //   Cookies.set("userData" , data.user.role)
-      //   Cookies.set("MyId" , data.user._id)
-      //   if (get().role === "admin") {
-      //     window.location.replace("/admin")
-      //   } else{
-      //     window.location.replace("/user")
-      //   }
-      // } else {
-      // }
+      if (values.confirmPassword === values.password) {
+        const {data} = await request.post("auth/register" , values)
+        set((state)=>({...state , isLogin : true , role : data.user.role}))      
+        Cookies.set("isLogin" , data.token)
+        Cookies.set("userData" , data.user.role)
+        Cookies.set("MyId" , data.user._id)
+        if (get().role === 1) {
+          window.location.replace("/admin")
+        } else{
+          window.location.replace("/user")
+        }
+      } else {
+      }
     } catch (err) {
     }
   },

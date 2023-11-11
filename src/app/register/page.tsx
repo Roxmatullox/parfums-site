@@ -1,7 +1,16 @@
+import Register from "@/components/Register/register"
+
 
 const RegisterPage = () => {
   return (
-    <div>RegisterPage</div>
+    <main>
+      <h1 style={{
+        textAlign:"center",
+        color:"white",
+        marginBottom:"30px"
+      }}>Register</h1>
+      <Register />
+    </main>
   )
 }
 
