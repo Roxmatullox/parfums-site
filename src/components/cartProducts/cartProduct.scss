@@ -1,0 +1,24 @@
+.product-card-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #9c27b0;
+    color: white;
+    height: 100% !important;
+    margin-right: 2px;
+  }
+
+  span{
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #9c27b0;
+    color: white;
+    height: 100% !important;
+    margin-right: 2px;
+  }
+}

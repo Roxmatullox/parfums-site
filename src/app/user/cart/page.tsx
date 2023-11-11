@@ -1,8 +1,14 @@
+
 import React from 'react'
+import CartProducts from '@/components/cartProducts/cartProducts'
+
 
 const CartPage = () => {
+
   return (
-    <main>CartPage</main>
+    <main>
+      <CartProducts />
+    </main>
   )
 }
 

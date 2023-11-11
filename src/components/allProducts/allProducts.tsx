@@ -5,6 +5,8 @@ import Product from "@/types/product";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 
+import Cookies from "js-cookie"
+
 import "./allProducts.scss"
 
 const AllProducts = () => {
@@ -19,6 +21,7 @@ const AllProducts = () => {
   const [active , setActive] = useState(1)
 
   
+  const [refresh , setRefresh] = useState(false)
 
   useEffect(()=>{
     const getProducts = async ()=>{
@@ -38,7 +41,7 @@ const AllProducts = () => {
       }
     }
     getProducts()
-  } , [active , search , sort])
+  } , [active , search , sort , refresh])
 
   const handleSearch = (str : string)=>{
     setSearch(str)
@@ -48,9 +51,66 @@ const AllProducts = () => {
     setSort(sort)
   }
 
+  const JsonCart = Cookies.get("cart")
+
+  const StorageProducts =  JsonCart ? JSON.parse(JsonCart) : null
+
+  interface storeProduct {
+    el: Product
+    quantity : number
+  }
+
+  const handleQuantity = async (el : Product)=>{
+    const Cartproducts = StorageProducts || []
+    Cartproducts.push({el , quantity:1})
+    Cookies.set("cart" , JSON.stringify(Cartproducts))
+    setRefresh(!refresh)
+  }
+
+  const plusQuantity = (id : string)=>{
+    StorageProducts.map((el : storeProduct)=>{
+      if (el.el._id === id) {        
+        el.quantity = el.quantity + 1
+      }
+    })
+    Cookies.set("cart" , JSON.stringify(StorageProducts))
+    setRefresh(!refresh)
+  }
+
+  const minusQuantity = (id : string)=>{
+    const Cartproducts : storeProduct[] = []
+    StorageProducts.map((el : storeProduct)=>{
+      if (el.el._id === id) {
+        console.log(el);
+        if (el.quantity > 1) {
+          el.quantity = el.quantity-1
+          Cartproducts.push(el)
+        }
+      } else{
+        Cartproducts.push(el)
+      }
+    })
+    Cookies.set("cart" , JSON.stringify(Cartproducts))
+    setRefresh(!refresh)
+  }
+
+  const cartBtn = (el : Product)=>{
+    let pr : storeProduct = StorageProducts.find((el2 : storeProduct)=>el2.el._id === el._id)
+    if (pr) {
+      return <div key={el._id}>
+        <button onClick={()=>minusQuantity(pr.el._id)}>-</button>
+        <span>{pr.quantity}</span>
+        <button onClick={()=>plusQuantity(pr.el._id)}>+</button>
+      </div>
+    } else {
+      return <button key={el._id} onClick={()=>handleQuantity(el)}>Add to cart</button>   
+    }
+  }
+
   return (
     <div>
       <div className="container">
+        <h1>Products ({total})</h1>
       <section id="search">
         <div className="container">
           <div className="search-container">
@@ -108,7 +168,14 @@ const AllProducts = () => {
                     </div>
                   </div>
                   <div className="product-card-right">
-                      <Button variant='contained' color="secondary">Add to cart</Button>
+                    {
+                      StorageProducts ? <>{
+                        cartBtn(el)
+                        // StorageProducts.find((el2 : storeProduct)=>el2.el._id === el._id) ?
+                        // <button key={el._id}>Go to cart</button> :
+                        //  <button key={el._id} onClick={()=>handleQuantity(el)}>Add to cart</button>                       
+                        }</> : <button key={el._id} onClick={()=>handleQuantity(el)}>Add to cart</button>
+                    }
                   </div>
                 </div>
               )
