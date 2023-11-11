@@ -4,7 +4,7 @@ import useAuth from '@/zustand/auth'
 import React from 'react'
 
 import "./login.scss"
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
   
