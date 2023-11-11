@@ -3,14 +3,17 @@
 import React from 'react'
 
 import { Button } from "@mui/material";
+import { useRouter } from 'next/router';
 
 const NavigateToLogin = () => {
 
-  // const navigate = true
+  const router = useRouter()
 
-  // if (navigate) {
-  //   window.location.replace("/login")
-  // }
+  const navigate = true
+
+  if (navigate) {
+    router.push("/login")
+  }
 
   return (
     <Button color='secondary' variant='contained' href="/login">Get started</Button>

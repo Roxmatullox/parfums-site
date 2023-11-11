@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 
 import newProductImg from "../../assets/istockphoto-1197832105-612x612.jpg"
-import categoryImg from "../../assets/category.avif"
+import categoryImg from "../../assets/category.jpg"
 
 export const metadata: Metadata = {
   title: 'Rzzzy parfums home',
@@ -35,7 +35,7 @@ const page = () => {
               }}  />
             </div>
             <div className="all-categories-text">
-              <Image width={930} height={540} src={categoryImg} alt='Category-img' style={{
+              <Image width={900} height={340} src={categoryImg} alt='Category-img' style={{
                 width:"100%",
                 height:"100%",
                 objectFit:"cover"

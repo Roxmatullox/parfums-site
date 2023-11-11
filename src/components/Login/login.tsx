@@ -4,18 +4,21 @@ import useAuth from '@/zustand/auth'
 import React from 'react'
 
 import "./login.scss"
+import { useRouter } from 'next/router'
 
 const Login = () => {
   
   const {login , isLogin , role} = useAuth()
 
-  // if (isLogin) {
-  //   if (role === 1) {
-  //     window.location.replace("/admin")
-  //   } else{
-  //     window.location.replace("/user")
-  //   }
-  // }
+  const router = useRouter()
+
+  if (isLogin) {
+    if (role === 1) {
+      router.push("/admin")
+    } else{
+      router.push("/user")
+    }
+  }
 
   return (
     <div className="login">
