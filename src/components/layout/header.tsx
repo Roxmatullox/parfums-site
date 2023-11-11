@@ -357,7 +357,7 @@ function HomeHeader() {
                         color:"black"
                       }}
                     >
-                      {StorageProducts.length > 0 ? `${page} (${StorageProducts.length})` : `${page}` }
+                      {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
                     </Button>
                   </MenuItem>
                   )
@@ -412,7 +412,7 @@ function HomeHeader() {
                       color:"black"
                     }}
                   >
-                    {StorageProducts.length > 0 ? `${page} (${StorageProducts.length})` : `${page}` }
+                    {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
                   </Button>
                 </MenuItem>
                 )
