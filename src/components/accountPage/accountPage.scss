@@ -1,0 +1,32 @@
+.account-page{
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+
+    h1{
+      color: black !important;
+      border: none !important;
+    }
+
+    >*{
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: transparent;
+      border: 1px solid #9c27b0;
+    }
+
+    button{
+      background-color: #9c27b0;
+    }
+  }
+}

@@ -24,7 +24,7 @@ const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orde
 const adminPages = ['Products', 'Pricing', 'Blog'];
 const startPages = ['Products', 'Pricing', 'Blog'];
 
-const settings = ['profile', 'logout'];
+const settings = ['account', 'logout'];
 
 function HomeHeader() {
   
