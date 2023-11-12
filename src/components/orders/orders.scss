@@ -1,0 +1,45 @@
+.product-text{ 
+  *{
+    margin-bottom: 0 !important;
+  }
+}
+
+.orders{
+
+  .product-card{
+    display: flex;
+    justify-content: space-between;align-items: center;
+    border: 1px solid #9c27b0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+  
+    *{
+      color: black !important;
+    }
+  }
+
+  .order-card{
+    border: 1px solid #9c27b0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  
+    *{
+      color: black !important;
+    }
+  }
+
+  .ACCEPTED{
+    background-color: chartreuse;
+  }
+
+  .CANCELED{
+    background-color: red;
+  }
+
+  .SUCCESS{
+    background-color: cornflowerblue;
+  }
+}

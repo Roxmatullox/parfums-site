@@ -71,8 +71,6 @@ const useAuth = create<AuthInterface>()((set , get) => ({
         Cookies.remove("userData")
         Cookies.remove("MyId")
         window.location.replace("/")
-      } else{
-        window.location.replace("/")
       }
   }
 }))

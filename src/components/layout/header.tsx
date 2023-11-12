@@ -17,15 +17,20 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import useCart from '@/zustand/cart';
+import useAuth from '@/zustand/auth';
 
 
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
 const adminPages = ['Products', 'Pricing', 'Blog'];
 const startPages = ['Products', 'Pricing', 'Blog'];
 
-const settings = ['Profile', 'Logout'];
+const settings = ['profile', 'logout'];
 
 function HomeHeader() {
+  
+  const {logout} = useAuth()
+
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -457,11 +462,40 @@ function HomeHeader() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map((setting) => {
+                if (setting === "logout") {
+                  return (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Button
+                      key={setting}
+                      onClick={logout}
+                      style={{
+                        color:"black"
+                      }}
+                    >
+                      {
+                        setting
+                      }
+                    </Button>
+                  </MenuItem>
+                  )
+                } else {
+                  return (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Button
+                      href={`/user/${setting}`}
+                      key={setting}
+                      onClick={handleCloseNavMenu}
+                      style={{
+                        color:"black"
+                      }}
+                    >
+                      {setting}
+                    </Button>
+                  </MenuItem>
+                  )
+                }
+              })}
             </Menu>
           </Box>
         </Toolbar>
