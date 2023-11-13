@@ -8,6 +8,7 @@ import "./accountPage.scss"
 const AccountPageComp = () => {
 
   const { getValues ,getUserDatas , values , updateUserDatas} = useUserDatas()
+  
 
   useEffect(()=>{
     getUserDatas()

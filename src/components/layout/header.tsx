@@ -18,6 +18,7 @@ import { usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import useCart from '@/zustand/cart';
 import useAuth from '@/zustand/auth';
+import useUserDatas from '@/zustand/account';
 
 
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
@@ -29,6 +30,13 @@ const settings = ['account', 'logout'];
 function HomeHeader() {
   
   const {logout} = useAuth()
+
+  const { getUserDatas , values} = useUserDatas()
+  
+
+  useEffect(()=>{
+    getUserDatas()
+  } , [getUserDatas])
 
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -443,7 +451,13 @@ function HomeHeader() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <h1 style={{
+                  padding:"3px 12px",
+                  backgroundColor:"gray",
+                  borderRadius:"50%",
+                  color:"white",
+                  marginTop:"10px"
+                }}>{values.username.slice(0,1).toUpperCase() || <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> }</h1>
               </IconButton>
             </Tooltip>
             <Menu

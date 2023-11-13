@@ -7,9 +7,9 @@ import { useRouter } from 'next/navigation';
 
 const NavigateToLogin = () => {
 
-  // const router = useRouter()
+  const router = useRouter()
 
-  // router.replace("/login")
+  router.replace("/login" , { scroll: false })
 
   return (
     <Button color='secondary' variant='contained' href="/login">Get started</Button>
