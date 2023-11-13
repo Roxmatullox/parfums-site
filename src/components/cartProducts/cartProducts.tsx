@@ -6,10 +6,11 @@ import Product from '@/types/product'
 
 import "./cartProduct.scss"
 import useCart from '@/zustand/cart'
+import { Button } from '@mui/material'
 
 const CartProducts = () => {
 
-  const {refresh , setRefresh} = useCart()
+  const {refresh , setRefresh , buyThisProducts} = useCart()
 
   const JsonCart = Cookies.get("cart")
   
@@ -83,6 +84,9 @@ const CartProducts = () => {
               }) : <></>
             }
           </div>
+          {
+            StorageProducts?.length >= 1 ? <Button onClick={buyThisProducts} color='secondary' variant='contained' >Buy</Button> : <></>
+          }
         </div>
       </div>
     </>
