@@ -3,6 +3,7 @@
 import React from 'react'
 
 import useAuth from '@/zustand/auth'
+import { Button } from '@mui/material'
 
 import "./register.scss"
 
@@ -28,6 +29,7 @@ const Register = () => {
             <label htmlFor="confirmPassword"> <span>*</span> Confirm Password</label>
             <input type="password" id='confirmPassword' />
             <button type='submit'>Register</button>
+            <p>If you have an account <Button color='secondary' variant='contained' href="/login">Login</Button></p>
           </form>
         </div>
       </div>
