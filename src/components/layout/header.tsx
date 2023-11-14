@@ -19,6 +19,7 @@ import Cookies from 'js-cookie';
 import useCart from '@/zustand/cart';
 import useAuth from '@/zustand/auth';
 import useUserDatas from '@/zustand/account';
+import useLocationRules from '@/zustand/location-rules';
 
 
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
@@ -31,25 +32,13 @@ function HomeHeader() {
   let location = usePathname()
 
   const { isLogin , role} = useAuth()
-  const router = useRouter()    
 
-  if (isLogin === false || role === 1) {
-    if (location.split("/")[1] === "user") {
-      router.replace("/admin" , { scroll: false })  
-    }
-  }
+  const {Rule} = useLocationRules()
 
 
-  if (isLogin === false || role === 0) {
-    if (location.split("/")[1] === "admin") {
-      router.replace("/user" , { scroll: false })  
-    }
-  }
-
-
-
-
-
+  useEffect(()=>{
+    Rule({location:location , isLogin : isLogin , role : role })
+  } , [location , Rule , role , isLogin])
 
   
   const {logout} = useAuth()
