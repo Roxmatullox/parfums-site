@@ -7,6 +7,9 @@ import Slider from "react-slick"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Carousel } from 'react-bootstrap'
+import useAuth from '@/zustand/auth'
+
+import { usePathname, useRouter } from 'next/navigation'
 
 const GetCategories = () => {
 
