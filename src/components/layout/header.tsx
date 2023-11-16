@@ -21,6 +21,9 @@ import useAuth from '@/zustand/auth';
 import useUserDatas from '@/zustand/account';
 import useLocationRules from '@/zustand/location-rules';
 
+import "./layout.scss"
+import Link from 'next/link';
+
 
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
 const adminPages = ['Products', 'Pricing', 'Blog'];
@@ -47,8 +50,10 @@ function HomeHeader() {
   
 
   useEffect(()=>{
-    getUserDatas()
-  } , [getUserDatas])
+    if (isLogin) {
+      getUserDatas()
+    }
+  } , [getUserDatas , isLogin])
 
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -88,87 +93,10 @@ function HomeHeader() {
     <AppBar color='secondary' position="fixed">
       {
         location === "/admi" ? 
-        <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Admin
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {adminPages.map((page) => (
-                  <Button href={`${page}`} key={page} onClick={handleCloseNavMenu}>{page}</Button>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Admin
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {adminPages.map((page) => (
-              <Button sx={{ my: 2, color: 'white', display: 'block' }} href={`${page}`} key={page} onClick={handleCloseNavMenu}>{page}</Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+        <div>
+          <div className='admin-header'>
+            Header
+            <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <h1 style={{
@@ -232,8 +160,16 @@ function HomeHeader() {
               })}
             </Menu>
           </Box>
-        </Toolbar>
-      </Container> : <></>
+          </div>
+          <div className='admin-aside'>
+            <div className="aside-links">
+              <Link href="/admin" >Dashboard</Link >
+              <Link href="/admin/category" >Categories</Link >
+              <Link href="/admin/products" >Products</Link >
+              <Link href="/admin/users" >Users</Link >
+            </div>
+          </div>
+        </div> : <></>
       }
       {
         location === "/user" ?

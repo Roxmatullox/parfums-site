@@ -10,6 +10,7 @@ import { Carousel } from 'react-bootstrap'
 import useAuth from '@/zustand/auth'
 
 import { usePathname, useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 const GetCategories = () => {
 
@@ -37,8 +38,8 @@ const GetCategories = () => {
       setLoading(true)
       const {data} = await request.get("category")
       setCategory(data)
-    } catch (err) {
-      console.log(err); 
+    } catch (err : object | any) {
+      toast.error(err.response.data || "Error")
     } finally{
       setLoading(false)
     }

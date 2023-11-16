@@ -17,11 +17,13 @@ interface locationRulesInterface {
 const useLocationRules = create<locationRulesInterface>()((set , get)=>({
   Rule:({location , isLogin , role})=>{
 
-    console.log(location);
+    console.log(location.split("/")[1]);
     
 
-    if (isLogin === false && location.split("/")[1] !== "logi" ) {      
-      window.location.replace("/login")  
+    if (isLogin === false && location.split("/")[1] !== "logi" ) {  
+      if (location.split("/")[1] !== "regi") {
+        window.location.replace("/login")  
+      }    
     } else if (role === 1 && location.split("/")[1] === "user") {      
         window.location.replace("/admin")  
     } else if ( role === 0 && location.split("/")[1] === "admi") {      

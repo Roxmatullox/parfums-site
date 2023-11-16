@@ -3,6 +3,8 @@ import order from "@/types/order";
 import storeProduct from "@/types/storeCartProduct";
 import { create } from "zustand"
 
+import {toast} from "react-toastify"
+
 
 
 
@@ -25,8 +27,8 @@ const useOrders = create<OrdersInterface>()((set , get)=>({
       data.reverse()
       const orders = data.slice(0,3)
       set({orders , total : data.length})
-    } catch (err) {
-      console.log(err);
+    }  catch(err : object | any) {        
+      toast.error(err.response.data.msg || "Error")
     }
   }
 }))

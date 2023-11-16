@@ -8,6 +8,9 @@ import Slider from "react-slick"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Carousel } from 'react-bootstrap'
 import Product from '@/types/product'
+import {ToastContainer} from "react-toastify"
+
+import {toast} from "react-toastify"
 
 const LatestProducts = () => {
 
@@ -24,8 +27,8 @@ const LatestProducts = () => {
       setLoading(true)
       const {data} = await request.get("last-products")
       setProducts(data)
-    } catch (err) {
-      console.log(err); 
+    } catch (err : object | any) {
+      toast.error(err.message || "Error")
     } finally{
       setLoading(false)
     }

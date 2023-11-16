@@ -45,5 +45,12 @@ main{
   margin-right: auto;
 }
 
+button:disabled{
+  background-color: gray !important;
+}
 
 
+.admin-main{
+  margin-left: 15vw;
+  padding: 80px 20px;
+}

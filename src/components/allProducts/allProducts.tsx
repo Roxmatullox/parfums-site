@@ -11,6 +11,9 @@ import Image from "next/image";
 import useCart from "@/zustand/cart";
 import storeProduct from "@/types/storeCartProduct";
 
+import {toast} from "react-toastify"
+import { ToastContainer } from "react-toastify";
+
 const AllProducts = () => {
 
   const {refresh , setRefresh} = useCart()
@@ -38,8 +41,8 @@ const AllProducts = () => {
         setProducts(data.products)
         setTotal(data.total)
         setTotalPaginate(Math.ceil(data.total / 10))
-      } catch (err) {
-        console.log(err);
+      } catch (err : object | any) {
+        toast.error(err.response.data || "Error")
       }
     }
     getProducts()
@@ -101,10 +104,10 @@ const AllProducts = () => {
       return <div key={el._id}>
         <button onClick={()=>minusQuantity(pr.el._id)}>-</button>
         <span>{pr.quantity}</span>
-        <button onClick={()=>plusQuantity(pr.el._id)}>+</button>
+        <button disabled={el.quantity <= pr.quantity ? true : false} onClick={()=>plusQuantity(pr.el._id)}>+</button>
       </div>
     } else {
-      return <button key={el._id} onClick={()=>handleQuantity(el)}>Add to cart</button>   
+      return <button disabled={el.quantity === 0 ? true : false} key={el._id} onClick={()=>handleQuantity(el)}>Add to cart</button>   
     }
   }
 
@@ -197,6 +200,9 @@ const AllProducts = () => {
                     <div className="product-text">
                       <h3>{el.title}</h3>
                       <p>{el.description}</p>
+                      <p>
+                        {el.quantity}x
+                      </p>
                       <p>1x {el.price} sum</p>
                     </div>
                   </div>

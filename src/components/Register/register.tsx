@@ -6,6 +6,7 @@ import useAuth from '@/zustand/auth'
 import { Button } from '@mui/material'
 
 import "./register.scss"
+import { ToastContainer } from 'react-toastify'
 
 const Register = () => {
 

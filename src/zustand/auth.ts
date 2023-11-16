@@ -2,6 +2,8 @@
 import request from "@/server/request"
 import Cookies from "js-cookie"
 
+import { toast } from "react-toastify";
+
 import { create } from 'zustand'
 interface AuthInterface {
   isLogin : boolean,
@@ -31,7 +33,10 @@ const useAuth = create<AuthInterface>()((set , get) => ({
       } else{
         window.location.replace("/user")
       }
-    } catch (err) {      
+    }  catch (err : object | any) {
+      console.log(err);
+      
+      toast.error(err.response.data.msg || "Error")
     }
   },
 
@@ -60,8 +65,10 @@ const useAuth = create<AuthInterface>()((set , get) => ({
           window.location.replace("/user")
         }
       } else {
+        toast.error("Parolni qayta tekshiring")
       }
-    } catch (err) {
+    }  catch (err : object | any) {
+      toast.error(err.response.data.msg || "Error")
     }
   },
   logout : ()=>{

@@ -1,5 +1,6 @@
 import AllProducts from '@/components/allProducts/allProducts'
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
 
 const ProductsPage = () => {
   return (
@@ -7,6 +8,7 @@ const ProductsPage = () => {
       <div className="all-products">
         <AllProducts />
       </div>
+        <ToastContainer/>
     </main>
   )
 }

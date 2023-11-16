@@ -73,12 +73,14 @@ const CartProducts = () => {
                     <div className="product-text">
                       <h3>{el.el.title}</h3>
                       <p>{el.el.description}</p>
+                      <p>{el.el.quantity}x</p>
+                      <p>{el.quantity}x {el.el.price * el.quantity} sum</p>
                     </div>
                   </div>
                   <div className="product-card-right">
                     <button onClick={()=>minusQuantity(el.el._id)}>-</button>
                     <span>{el.quantity}</span>
-                    <button onClick={()=>plusQuantity(el.el._id)}>+</button>
+                    <button disabled={el.el.quantity <= el.quantity ? true : false} onClick={()=>plusQuantity(el.el._id)}>+</button>
                   </div>
                 </div>
               }) : <></>

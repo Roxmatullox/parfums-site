@@ -9,6 +9,8 @@ import Image from 'next/image'
 import newProductImg from "../../assets/istockphoto-1197832105-612x612.jpg"
 import categoryImg from "../../assets/category.jpg"
 
+import {ToastContainer} from "react-toastify"
+
 export const metadata: Metadata = {
   title: 'Rzzzy parfums home',
   description: 'Parfums',
