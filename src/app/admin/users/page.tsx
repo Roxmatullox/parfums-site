@@ -4,18 +4,23 @@ import useUsers from '@/zustand/users'
 import {useEffect} from 'react'
 
 import "./user.scss"
+const PageUsers = () => {
 
-const UsersPage = () => {
-
-  const {getData , totalPaginate , active , setActive , handleOk , selected , getValues , data , handleCancel , total , values , showModal , isModalOpen , editData , deleteData} = useUsers()
+  const {getData , SearchData , totalPaginate , active , setActive , handleOk , selected , getValues , data , handleCancel , total , values , showModal , isModalOpen , editData , deleteData} = useUsers()
 
   useEffect(()=>{
     getData()
   } , [getData])
-  
 
   return (
     <main className='admin-main'>
+      <section id="search">
+        <div className="container">
+          <div className="search-container">
+            <input onChange={(e)=>SearchData(e)} type="text" placeholder="Search..." />
+          </div>
+        </div>
+      </section> 
       <div className="all-users">
         <div className="container">
           <h1>Users ({total})</h1>
@@ -76,4 +81,4 @@ const UsersPage = () => {
   )
 }
 
-export default UsersPage
+export default PageUsers

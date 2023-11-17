@@ -104,7 +104,6 @@ function HomeHeader() {
                   backgroundColor:"gray",
                   borderRadius:"50%",
                   color:"white",
-                  marginTop:"10px"
                 }}>{values.username.slice(0,1).toUpperCase() || <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> }</h1>
               </IconButton>
             </Tooltip>
@@ -164,9 +163,13 @@ function HomeHeader() {
           <div className='admin-aside'>
             <div className="aside-links">
               <Link href="/admin" >Dashboard</Link >
+              <hr />
               <Link href="/admin/category" >Categories</Link >
+              <hr />
               <Link href="/admin/products" >Products</Link >
+              <hr />
               <Link href="/admin/users" >Users</Link >
+              <hr />
             </div>
           </div>
         </div> : <></>

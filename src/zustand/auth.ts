@@ -33,9 +33,7 @@ const useAuth = create<AuthInterface>()((set , get) => ({
       } else{
         window.location.replace("/user")
       }
-    }  catch (err : object | any) {
-      console.log(err);
-      
+    }  catch (err : object | any) {      
       toast.error(err.response.data.msg || "Error")
     }
   },

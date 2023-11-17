@@ -1,6 +1,8 @@
 import request from "@/server/request";
 import { create } from "zustand";
 
+import {toast} from "react-toastify"
+
 
 interface UserDatas {
   role: number;
@@ -19,6 +21,7 @@ interface UserDatasInterface {
   getUserDatas :()=>void,
   getValues:(e : React.FormEvent<HTMLInputElement>)=>void
   updateUserDatas : (e :React.FormEvent<HTMLFormElement> )=>void
+  updateUserPassword:(e :React.FormEvent<HTMLFormElement>)=>void
 }
 
 
@@ -55,6 +58,23 @@ const useUserDatas = create<UserDatasInterface>()((set , get)=>({
     const {data} = await request.put("auth/update" , values)
     set({values : data})
   },
+
+  updateUserPassword: async(e)=>{
+    e.preventDefault()
+    const values = {
+      currentPassword : e.currentTarget.currentPassword.value,
+      newPassword : e.currentTarget.newPassword.value
+    }
+
+    if (e.currentTarget.newPassword.value === e.currentTarget.confirmPassword.value) {
+      try {
+        await request.put("auth/password" , values)
+        toast.success("Parol ozgartirildi !")
+      }catch (err : object | any) {      
+        toast.error(err.response.data.msg || "Error")
+      }
+    }
+  }
 }))
 
 export default useUserDatas
