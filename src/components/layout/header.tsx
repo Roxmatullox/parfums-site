@@ -23,6 +23,7 @@ import useLocationRules from '@/zustand/location-rules';
 
 import "./layout.scss"
 import Link from 'next/link';
+import useOrdersAdmin from '@/zustand/orders-admin';
 
 
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
@@ -87,6 +88,12 @@ function HomeHeader() {
   useEffect(()=>{
     setStorageProducts(JsonCart ? JSON.parse(JsonCart) : null)
   } , [refresh])
+
+  const {total , getData} = useOrdersAdmin()
+
+  useEffect(()=>{
+    getData()
+  } ,[getData])
   
 
   return (
@@ -95,7 +102,7 @@ function HomeHeader() {
         location === "/admi" ? 
         <div>
           <div className='admin-header'>
-            Header
+            <h3>Orders ({total})</h3>
             <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

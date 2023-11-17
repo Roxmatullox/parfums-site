@@ -1,0 +1,45 @@
+.orders-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  >div{
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    justify-content: space-between;
+     *{
+      color: black !important;
+     }
+  }
+
+  .order-card-btns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    >button{
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: blueviolet;
+      color: white !important;
+      
+      &:disabled{
+        background-color: gray;
+      }
+    }
+
+  }
+}
+
+.sort-select{
+  padding: 10px;
+  border: 1px solid blueviolet;
+  background-color: cornsilk;
+  border-radius: 14px;
+  margin:  10px;
+}

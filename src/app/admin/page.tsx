@@ -7,18 +7,21 @@ import Link from "next/link"
 import {useEffect} from "react"
 
 import "./dashboard.scss"
+import useOrdersAdmin from "@/zustand/orders-admin"
 
 const AdminDashboard = () => {
 
   const {getData : getProducts ,total : productsTotal } = useProducts()
   const {getData : getUsers ,total : usersTotal } = useUsers()
   const {getData : getCategories ,total : categoryTotal } = useCategory()
+  const {total : ordersTotal , getData : getOrders} = useOrdersAdmin()
 
   useEffect(()=>{
     getProducts()
     getUsers()
     getCategories()
-  } , [getProducts , getUsers , getCategories])
+    getOrders()
+  } , [getProducts , getUsers , getCategories ,getOrders])
 
 
   return (
@@ -42,7 +45,7 @@ const AdminDashboard = () => {
               <Link href="admin/users" >Go{" ->"}</Link>
             </div>
             <div>
-              <h3>Orders ()</h3>
+              <h3>Orders ({ordersTotal ? ordersTotal : "-"})</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit accusamus, similique esse unde ducimus beatae?</p>
               <Link href="admin/orders" >Go{" ->"}</Link>
             </div>
