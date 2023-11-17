@@ -102,7 +102,7 @@ function HomeHeader() {
         location === "/admi" ? 
         <div>
           <div className='admin-header'>
-            <h3>Orders ({total})</h3>
+            <Link href="/admin/orders" ><h3>Orders ({total})</h3></Link>
             <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
