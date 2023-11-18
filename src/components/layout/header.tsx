@@ -45,7 +45,7 @@ function HomeHeader() {
   } , [location , Rule , role , isLogin])
 
   
-  const {logout} = useAuth()
+  const {logout , isLogin} = useAuth()
 
   const { getUserDatas , values} = useUserDatas()
   
@@ -92,7 +92,9 @@ function HomeHeader() {
   const {total , getData} = useOrdersAdmin()
 
   useEffect(()=>{
-    getData()
+    if (isLogin) {
+      getData()
+    }
   } ,[getData])
   
 
