@@ -44,6 +44,8 @@ function HomeHeader() {
 
   let location = usePathname()
 
+  const locationForActive = usePathname()
+
   const {role} = useAuth()
   const {logout , isLogin} = useAuth()
 
@@ -103,6 +105,7 @@ function HomeHeader() {
       getData()
     }
   } ,[getData])
+  
   
 
   return (
@@ -178,14 +181,14 @@ function HomeHeader() {
           </div>
           <div className='admin-aside'>
             <div className="aside-links">
-              <Link href="/admin" > <Image width={500} height={500} src={dashboard} alt="" /> <span>Dashboard</span> </Link >
-              <hr />
-              <Link href="/admin/category" > <Image width={500} height={500} src={category} alt="" /> <span>Categories</span> </Link >
-              <hr />
-              <Link href="/admin/products" > <Image width={860} height={899} src={product} alt="" /> <span>Products</span> </Link >
-              <hr />
-              <Link href="/admin/users" > <Image width={500} height={500} src={users} alt="" /> <span>Users</span> </Link >
-              <hr />
+              <Link className={locationForActive === "/admin" ? "LayoutActive" : "" } href="/admin" > <Image width={500} height={500} src={dashboard} alt="" /> <span>Dashboard</span> </Link >
+              {/* <hr /> */}
+              <Link className={locationForActive === "/admin/category" ? "LayoutActive" : "" } href="/admin/category" > <Image width={500} height={500} src={category} alt="" /> <span>Categories</span> </Link >
+              {/* <hr /> */}
+              <Link className={locationForActive === "/admin/products" ? "LayoutActive" : "" } href="/admin/products" > <Image width={860} height={899} src={product} alt="" /> <span>Products</span> </Link >
+              {/* <hr /> */}
+              <Link className={locationForActive === "/admin/users" ? "LayoutActive" : "" } href="/admin/users" > <Image width={500} height={500} src={users} alt="" /> <span>Users</span> </Link >
+              {/* <hr /> */}
             </div>
           </div>
         </div> : <></>
@@ -248,6 +251,7 @@ function HomeHeader() {
                 if (page === "cart") {
                   return (
                       <Link
+                      className={locationForActive === `/user/${page}` ? "LayoutActive" : "" }
                       href={`/user/${page}`}
                       key={page}
                       onClick={handleCloseNavMenu}
@@ -261,6 +265,7 @@ function HomeHeader() {
                 } else {
                   return (
                       <Link
+                      className={locationForActive === `/user/${page}` ? "LayoutActive" : "" }
                       href={`/user/${page}`}
                       key={page}
                       onClick={handleCloseNavMenu}
@@ -298,6 +303,7 @@ function HomeHeader() {
               if (page === "cart") {
                 return (
                     <Link
+                    className={locationForActive === `/user/${page}` ? "LayoutActive" : "" }
                     href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -311,6 +317,7 @@ function HomeHeader() {
               } else {
                 return (
                     <Link
+                    className={locationForActive === `/user/${page}` ? "LayoutActive" : "" }
                     href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
