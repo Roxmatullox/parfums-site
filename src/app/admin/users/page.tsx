@@ -5,12 +5,6 @@ import {useEffect} from 'react'
 
 import "./user.scss"
 
-import { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: 'Users',
-  description: 'Parfums',
-}
 
 const PageUsers = () => {
 

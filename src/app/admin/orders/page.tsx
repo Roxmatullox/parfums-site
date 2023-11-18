@@ -6,12 +6,7 @@ import {useEffect , useState} from 'react'
 
 import "./orders.scss"
 
-import { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: 'Orders',
-  description: 'Parfums',
-}
 
 const OrdersPage = () => {
 

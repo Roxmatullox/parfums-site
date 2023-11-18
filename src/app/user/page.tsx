@@ -11,7 +11,7 @@ import categoryImg from "../../assets/category.jpg"
 
 import {ToastContainer} from "react-toastify"
 
-export const metadata: Metadata = {
+export const metadata : Metadata = {
   title: 'Home',
   description: 'Parfums',
 }

@@ -5,13 +5,6 @@ import useCategory from "@/zustand/category"
 
 import "./category.scss"
 
-import { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: 'Categories',
-  description: 'Parfums',
-}
-
 const CategoryPage = () => {
 
   const [isModalOpen , setIsModalOpen] = useState(false)

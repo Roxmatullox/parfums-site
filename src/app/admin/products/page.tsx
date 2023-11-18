@@ -7,12 +7,7 @@ import {toast} from "react-toastify"
 import "./products.scss"
 import request from '@/server/request'
 
-import { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: 'Products',
-  description: 'Parfums',
-}
 
 const ProductsPage = () => {
 
