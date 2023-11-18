@@ -35,7 +35,8 @@ function HomeHeader() {
 
   let location = usePathname()
 
-  const { isLogin , role} = useAuth()
+  const {role} = useAuth()
+  const {logout , isLogin} = useAuth()
 
   const {Rule} = useLocationRules()
 
@@ -45,7 +46,6 @@ function HomeHeader() {
   } , [location , Rule , role , isLogin])
 
   
-  const {logout , isLogin} = useAuth()
 
   const { getUserDatas , values} = useUserDatas()
   
