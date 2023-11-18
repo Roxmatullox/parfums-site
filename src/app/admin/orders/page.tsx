@@ -33,7 +33,7 @@ const OrdersPage = () => {
   return (
     <main className='admin-main'>
       <div className="orders">
-        <div className="container">
+        <div>
           <h1>Orders ({total})</h1>
           <select onChange={(e)=>setSort(e.currentTarget.value)} className='sort-select'>
             <option value="">All</option>

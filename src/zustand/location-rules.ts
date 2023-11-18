@@ -15,10 +15,7 @@ interface locationRulesInterface {
 
 
 const useLocationRules = create<locationRulesInterface>()((set , get)=>({
-  Rule:({location , isLogin , role})=>{
-
-    console.log(location.split("/")[1]);
-    
+  Rule:({location , isLogin , role})=>{    
 
     if (isLogin === false && location.split("/")[1] !== "logi" ) {  
       if (location.split("/")[1] !== "regi") {

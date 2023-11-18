@@ -26,6 +26,14 @@ import Link from 'next/link';
 import useOrdersAdmin from '@/zustand/orders-admin';
 
 
+import category from "../../assets/category.png"
+import product from "../../assets/product.png"
+import users from "../../assets/users.png"
+import dashboard from "../../assets/dashboard.jpg"
+import Image from 'next/image';
+
+
+
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
 const adminPages = ['Products', 'Pricing', 'Blog'];
 
@@ -169,13 +177,13 @@ function HomeHeader() {
           </div>
           <div className='admin-aside'>
             <div className="aside-links">
-              <Link href="/admin" >Dashboard</Link >
+              <Link href="/admin" > <Image width={500} height={500} src={dashboard} alt="" /> <span>Dashboard</span> </Link >
               <hr />
-              <Link href="/admin/category" >Categories</Link >
+              <Link href="/admin/category" > <Image width={500} height={500} src={category} alt="" /> <span>Categories</span> </Link >
               <hr />
-              <Link href="/admin/products" >Products</Link >
+              <Link href="/admin/products" > <Image width={860} height={899} src={product} alt="" /> <span>Products</span> </Link >
               <hr />
-              <Link href="/admin/users" >Users</Link >
+              <Link href="/admin/users" > <Image width={500} height={500} src={users} alt="" /> <span>Users</span> </Link >
               <hr />
             </div>
           </div>
@@ -252,8 +260,8 @@ function HomeHeader() {
                 } else {
                   return (
                     <MenuItem key={page} onClick={handleCloseUserMenu}>
-                      <Button
-                      href={`/user/${page}`}
+                      <Link
+                      href={`user/${page}`}
                       key={page}
                       onClick={handleCloseNavMenu}
                       style={{
@@ -261,7 +269,7 @@ function HomeHeader() {
                       }}
                     >
                       {page}
-                    </Button>
+                    </Link>
                   </MenuItem>
                   )
                 }
@@ -292,8 +300,8 @@ function HomeHeader() {
               if (page === "cart") {
                 return (
                   <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Button
-                    href={`/user/${page}`}
+                    <Link
+                    href={`user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
                     style={{
@@ -301,14 +309,14 @@ function HomeHeader() {
                     }}
                   >
                     {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
-                  </Button>
+                  </Link>
                 </MenuItem>
                 )
               } else {
                 return (
                   <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Button
-                    href={`/user/${page}`}
+                    <Link
+                    href={`user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
                     style={{
@@ -316,7 +324,7 @@ function HomeHeader() {
                     }}
                   >
                     {page}
-                  </Button>
+                  </Link>
                 </MenuItem>
                 )
               }
@@ -371,8 +379,8 @@ function HomeHeader() {
                 } else {
                   return (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Button
-                      href={`/user/${setting}`}
+                      <Link
+                      href={`user/${setting}`}
                       key={setting}
                       onClick={handleCloseNavMenu}
                       style={{
@@ -380,7 +388,7 @@ function HomeHeader() {
                       }}
                     >
                       {setting}
-                    </Button>
+                    </Link>
                   </MenuItem>
                   )
                 }

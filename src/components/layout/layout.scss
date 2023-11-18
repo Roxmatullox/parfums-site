@@ -21,14 +21,38 @@
   padding-right: 10px;
   z-index: 99999999;
 
+  @media (max-width:960px) {
+    &{
+      padding-left: 5px ;
+    }
+  }
+
   .aside-links{
     display: flex;
     flex-direction: column;
+
+    img{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
     a{
       padding: 10px;
       color: white;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      @media (max-width:960px) {
+        &{
+          span{
+            display: none;
+          }
+        }
+      }
     }
   }
 }

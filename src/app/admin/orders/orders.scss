@@ -3,6 +3,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 
+  @media (max-width:800px) {
+    &{
+      grid-template-columns: 1fr;
+    }
+  }
+
   >div{
     padding: 10px;
     background-color: white;
@@ -21,13 +27,15 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 
+
+
     >button{
       padding: 5px;
       border: none;
       border-radius: 5px;
       background-color: blueviolet;
       color: white !important;
-      
+
       &:disabled{
         background-color: gray;
       }
