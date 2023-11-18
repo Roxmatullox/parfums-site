@@ -166,7 +166,7 @@ function HomeHeader() {
                         color:"black"
                       }}
                     >
-                      {setting}
+                      {setting.toUpperCase()}
                     </Link>
                   </MenuItem>
                   )
@@ -332,14 +332,13 @@ function HomeHeader() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip className='user-header-account' title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <h1 style={{
                   padding:"3px 12px",
                   backgroundColor:"gray",
                   borderRadius:"50%",
                   color:"white",
-                  marginTop:"10px"
                 }}>{values.username.slice(0,1).toUpperCase() || <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> }</h1>
               </IconButton>
             </Tooltip>

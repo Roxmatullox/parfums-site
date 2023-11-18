@@ -3,16 +3,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width:800px) {
+    grid-template-columns: 1fr;
+
+    &{
+      form{
+        height: 100% !important;
+      }
+    }
+  }
 
   form{
-    width: 400px;
+    width: 100%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    margin-left: 10px;
 
     h1{
       color: black !important;
