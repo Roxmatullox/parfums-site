@@ -5,6 +5,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    gap: 30px;
+
+    >div{
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
   }
 }
 

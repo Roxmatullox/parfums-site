@@ -37,7 +37,6 @@ import Image from 'next/image';
 
 
 const userPages = ['products', 'about', 'contact' , 'cart' , 'favourite' , 'orders'];
-const adminPages = ['Products', 'Pricing', 'Blog'];
 
 const settings = ['account', 'logout'];
 
@@ -240,13 +239,15 @@ function HomeHeader() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'flex', md: 'none' },
+              }}
+              style={{
+                flexDirection:"column"
               }}
             >
               {userPages.map((page) => {
                 if (page === "cart") {
                   return (
-                    <MenuItem key={page} onClick={handleCloseUserMenu}>
                       <Link
                       href={`/user/${page}`}
                       key={page}
@@ -257,12 +258,10 @@ function HomeHeader() {
                     >
                       {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
                     </Link>
-                  </MenuItem>
                   )
                 } else {
                   return (
-                    <MenuItem key={page} onClick={handleCloseUserMenu}>
-                      <Button
+                      <Link
                       href={`/user/${page}`}
                       key={page}
                       onClick={handleCloseNavMenu}
@@ -271,8 +270,7 @@ function HomeHeader() {
                       }}
                     >
                       {page}
-                    </Button>
-                  </MenuItem>
+                    </Link>
                   )
                 }
                 })}
@@ -301,8 +299,7 @@ function HomeHeader() {
             {userPages.map((page) => {
               if (page === "cart") {
                 return (
-                  <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Button
+                    <Link
                     href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -311,13 +308,11 @@ function HomeHeader() {
                     }}
                   >
                     {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
-                  </Button>
-                </MenuItem>
+                  </Link>
                 )
               } else {
                 return (
-                  <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Button
+                    <Link
                     href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -326,8 +321,7 @@ function HomeHeader() {
                     }}
                   >
                     {page}
-                  </Button>
-                </MenuItem>
+                  </Link>
                 )
               }
             })}
@@ -379,8 +373,7 @@ function HomeHeader() {
                   )
                 } else {
                   return (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Button
+                      <Link
                       href={`/user/${setting}`}
                       key={setting}
                       onClick={handleCloseNavMenu}
@@ -388,9 +381,8 @@ function HomeHeader() {
                         color:"black"
                       }}
                     >
-                      {setting}
-                    </Button>
-                  </MenuItem>
+                      {setting.toUpperCase()}
+                    </Link>
                   )
                 }
               })}
