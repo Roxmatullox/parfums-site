@@ -45,8 +45,6 @@ function HomeHeader() {
     Rule({location:location , isLogin : isLogin , role : role })
   } , [location , Rule , role , isLogin])
 
-  
-
   const { getUserDatas , values} = useUserDatas()
   
 
@@ -92,7 +90,7 @@ function HomeHeader() {
   const {total , getData} = useOrdersAdmin()
 
   useEffect(()=>{
-    if (isLogin) {
+    if (isLogin && role === 1) {
       getData()
     }
   } ,[getData])
@@ -152,7 +150,7 @@ function HomeHeader() {
                 } else {
                   return (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Button
+                      <Link
                       href={`/admin/${setting}`}
                       key={setting}
                       onClick={handleCloseNavMenu}
@@ -161,7 +159,7 @@ function HomeHeader() {
                       }}
                     >
                       {setting}
-                    </Button>
+                    </Link>
                   </MenuItem>
                   )
                 }
@@ -239,7 +237,7 @@ function HomeHeader() {
                 if (page === "cart") {
                   return (
                     <MenuItem key={page} onClick={handleCloseUserMenu}>
-                      <Button
+                      <Link
                       href={`/user/${page}`}
                       key={page}
                       onClick={handleCloseNavMenu}
@@ -248,13 +246,13 @@ function HomeHeader() {
                       }}
                     >
                       {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
-                    </Button>
+                    </Link>
                   </MenuItem>
                   )
                 } else {
                   return (
                     <MenuItem key={page} onClick={handleCloseUserMenu}>
-                      <Button
+                      <Link
                       href={`/user/${page}`}
                       key={page}
                       onClick={handleCloseNavMenu}
@@ -263,7 +261,7 @@ function HomeHeader() {
                       }}
                     >
                       {page}
-                    </Button>
+                    </Link>
                   </MenuItem>
                   )
                 }
@@ -294,7 +292,7 @@ function HomeHeader() {
               if (page === "cart") {
                 return (
                   <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Button
+                    <Link
                     href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -303,13 +301,13 @@ function HomeHeader() {
                     }}
                   >
                     {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
-                  </Button>
+                  </Link>
                 </MenuItem>
                 )
               } else {
                 return (
                   <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Button
+                    <Link
                     href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -318,7 +316,7 @@ function HomeHeader() {
                     }}
                   >
                     {page}
-                  </Button>
+                  </Link>
                 </MenuItem>
                 )
               }
