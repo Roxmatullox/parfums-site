@@ -1,5 +1,11 @@
 import Register from "@/components/Register/register"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Register',
+  description: 'Parfums',
+}
 
 const RegisterPage = () => {
   return (

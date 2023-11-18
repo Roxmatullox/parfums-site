@@ -1,6 +1,12 @@
 
 
 import "./about.scss"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Parfums',
+}
 
 const AboutPage = () => {
   return (

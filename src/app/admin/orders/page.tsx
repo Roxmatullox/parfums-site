@@ -6,6 +6,13 @@ import {useEffect , useState} from 'react'
 
 import "./orders.scss"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Orders',
+  description: 'Parfums',
+}
+
 const OrdersPage = () => {
 
   // const {data : products , getData : getProducts} = useProducts()
@@ -29,6 +36,7 @@ const OrdersPage = () => {
   // }
 
   const [sort , setSort] = useState("")
+  
 
   return (
     <main className='admin-main'>

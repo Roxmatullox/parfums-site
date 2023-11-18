@@ -1,6 +1,13 @@
 
 import "./contact.scss"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description: 'Parfums',
+}
+
 const ContactPage = () => {
   return (
     <main>

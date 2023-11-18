@@ -12,7 +12,7 @@ import categoryImg from "../../assets/category.jpg"
 import {ToastContainer} from "react-toastify"
 
 export const metadata: Metadata = {
-  title: 'Rzzzy parfums home',
+  title: 'Home',
   description: 'Parfums',
 }
 

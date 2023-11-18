@@ -1,5 +1,12 @@
 import Login from "@/components/Login/login"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Login',
+  description: 'Parfums',
+}
+
 const LoginPage = () => {
   return (
     <main>

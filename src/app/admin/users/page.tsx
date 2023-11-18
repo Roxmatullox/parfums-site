@@ -4,6 +4,14 @@ import useUsers from '@/zustand/users'
 import {useEffect} from 'react'
 
 import "./user.scss"
+
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Users',
+  description: 'Parfums',
+}
+
 const PageUsers = () => {
 
   const {getData , SearchData , totalPaginate , active , setActive , handleOk , selected , getValues , data , handleCancel , total , values , showModal , isModalOpen , editData , deleteData} = useUsers()

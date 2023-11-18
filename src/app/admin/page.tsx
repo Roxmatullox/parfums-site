@@ -9,6 +9,13 @@ import {useEffect} from "react"
 import "./dashboard.scss"
 import useOrdersAdmin from "@/zustand/orders-admin"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'Parfums',
+}
+
 const AdminDashboard = () => {
 
   const {getData : getProducts ,total : productsTotal } = useProducts()

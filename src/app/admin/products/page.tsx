@@ -7,6 +7,13 @@ import {toast} from "react-toastify"
 import "./products.scss"
 import request from '@/server/request'
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Products',
+  description: 'Parfums',
+}
+
 const ProductsPage = () => {
 
   const {getData , setCategory : handelCategory , setSort , SearchData , handlePhoto , totalPaginate , active , setActive , handleOk , selected , getValues , data , handleCancel , total , values , showModal , isModalOpen , editData , deleteData} = useProducts()
