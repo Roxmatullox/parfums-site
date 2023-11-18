@@ -260,8 +260,8 @@ function HomeHeader() {
                 } else {
                   return (
                     <MenuItem key={page} onClick={handleCloseUserMenu}>
-                      <Link
-                      href={`user/${page}`}
+                      <Button
+                      href={`/user/${page}`}
                       key={page}
                       onClick={handleCloseNavMenu}
                       style={{
@@ -269,7 +269,7 @@ function HomeHeader() {
                       }}
                     >
                       {page}
-                    </Link>
+                    </Button>
                   </MenuItem>
                   )
                 }
@@ -300,8 +300,8 @@ function HomeHeader() {
               if (page === "cart") {
                 return (
                   <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Link
-                    href={`user/${page}`}
+                    <Button
+                    href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
                     style={{
@@ -309,14 +309,14 @@ function HomeHeader() {
                     }}
                   >
                     {StorageProducts?.length > 0 ? `${page} (${StorageProducts?.length})` : `${page}` }
-                  </Link>
+                  </Button>
                 </MenuItem>
                 )
               } else {
                 return (
                   <MenuItem key={page} onClick={handleCloseUserMenu}>
-                    <Link
-                    href={`user/${page}`}
+                    <Button
+                    href={`/user/${page}`}
                     key={page}
                     onClick={handleCloseNavMenu}
                     style={{
@@ -324,7 +324,7 @@ function HomeHeader() {
                     }}
                   >
                     {page}
-                  </Link>
+                  </Button>
                 </MenuItem>
                 )
               }
@@ -379,8 +379,8 @@ function HomeHeader() {
                 } else {
                   return (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Link
-                      href={`user/${setting}`}
+                      <Button
+                      href={`/user/${setting}`}
                       key={setting}
                       onClick={handleCloseNavMenu}
                       style={{
@@ -388,7 +388,7 @@ function HomeHeader() {
                       }}
                     >
                       {setting}
-                    </Link>
+                    </Button>
                   </MenuItem>
                   )
                 }
