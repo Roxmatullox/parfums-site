@@ -22,7 +22,9 @@ import useUserDatas from '@/zustand/account';
 import useLocationRules from '@/zustand/location-rules';
 
 import "./layout.scss"
+
 import Link from 'next/link';
+
 import useOrdersAdmin from '@/zustand/orders-admin';
 
 
@@ -57,7 +59,7 @@ function HomeHeader() {
   
 
   useEffect(()=>{
-    if (isLogin) {
+    if (isLogin && values.username.length < 2 ) {
       getUserDatas()
     }
   } , [getUserDatas , isLogin])
@@ -98,7 +100,7 @@ function HomeHeader() {
   const {total , getData} = useOrdersAdmin()
 
   useEffect(()=>{
-    if (isLogin && role === 1) {
+    if (isLogin && role === 1 && total === 0) {
       getData()
     }
   } ,[getData])
