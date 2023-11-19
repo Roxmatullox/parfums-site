@@ -12,7 +12,19 @@ const NavigateToLogin = () => {
   // router.replace("/login" , { scroll: false })
 
   return (
-    <Button color='secondary' variant='contained' href="/login">Get started</Button>
+    <div style={{
+      display:"flex",
+      flexDirection:"column",
+      rowGap:"20px"
+    }}>
+        <h2 style={{
+          maxWidth:"400px",
+          textAlign:"center",
+          marginLeft:"auto",
+          marginRight:"auto",
+        }}>Welcome, login or register to use the site !</h2>
+      <Button color='secondary' variant='contained' href="/login">Get started</Button>
+    </div>
   )
 }
 
