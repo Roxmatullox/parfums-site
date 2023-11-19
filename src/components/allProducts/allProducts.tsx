@@ -26,16 +26,29 @@ const AllProducts = () => {
   const [search , setSearch] = useState("")
   const [sort , setSort] = useState("")
   const [active , setActive] = useState(1)
-  
+
+  const [categories , setCategories] = useState<null | Category[]>(null)
+  const [category , setCategory] = useState<null | string >(null)
 
   useEffect(()=>{
     const getProducts = async ()=>{
-      const params = {
+      let params : object = {
         sort:sort,
         search:search,
         page:active,
-        limit:10
+        limit:10,
       }
+
+      if (category && category?.length > 2) {
+        params = {
+          sort:sort,
+          search:search,
+          page:active,
+          limit:10,
+          category:category,
+        }
+      }
+
       try {
         const {data} = await request.get("product" , {params})
         setProducts(data.products)
@@ -46,7 +59,7 @@ const AllProducts = () => {
       }
     }
     getProducts()
-  } , [active , search , sort , refresh])
+  } , [active , search , sort , refresh , category])
 
   const handleSearch = (str : string)=>{
     setSearch(str)
@@ -152,6 +165,32 @@ const AllProducts = () => {
     }
   }
 
+  interface Category {
+    _id: string;
+    name: string;
+    image: {
+        public_id: string;
+        url: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
+
+
+  const getLatestCategory = async ()=>{
+    try {
+      const {data} = await request.get("category")
+      setCategories(data)
+    } catch (err : object | any) {
+      toast.error(err.response.data || "Error")
+    }
+  }
+
+  useEffect(()=>{
+    getLatestCategory()
+  } , [])
+
 
   return (
     <div>
@@ -175,6 +214,14 @@ const AllProducts = () => {
               <option value="">Default</option>
               <option value={`sold`}>Bestsellers</option>
               <option value="-sold">Least sold</option>
+            </select>
+            <select className='sort-select' onChange={(e)=>{setCategory(e.currentTarget.value)}} name="category" id="category">
+              <option value="">Default</option>
+              {
+                categories?.map((el)=>{
+                  return <option key={el._id} value={el._id}>{el.name}</option>
+                })
+              }
             </select>
           </div>
         </div>

@@ -5,6 +5,7 @@ import {useEffect , useState} from 'react'
 import {toast} from "react-toastify"
 
 import "./products.scss"
+
 import request from '@/server/request'
 
 
@@ -76,6 +77,7 @@ const ProductsPage = () => {
               <option value="-sold">Bestsellers</option>
             </select>
             <select className='sort-select' onChange={(e)=>{handelCategory(e)}} name="category" id="category">
+              <option value="">Default</option>
               {
                 category?.map((el)=>{
                   return <option selected={values?.category?.toString() === el._id ? true : false} key={el._id} value={el._id}>{el.name}</option>
