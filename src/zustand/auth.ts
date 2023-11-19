@@ -54,7 +54,7 @@ const useAuth = create<AuthInterface>()((set , get) => ({
       if (values.confirmPassword === values.password) {
         const {data} = await request.post("auth/register" , values)
         set((state)=>({...state , isLogin : true , role : data.user.role}))      
-        Cookies.set("isLogin" , data.token)
+        Cookies.set("isLogin" , data.accesstoken)
         Cookies.set("userData" , data.user.role)
         Cookies.set("MyId" , data.user._id)
         if (get().role === 1) {
