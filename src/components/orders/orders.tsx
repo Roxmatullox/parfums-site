@@ -45,16 +45,16 @@ const Orders = () => {
                             height:"100px",
                             objectFit:"cover",
                             borderRadius:"10px"
-                          }} src={el.product.image.url} alt="product" />
+                          }} src={el?.product?.image?.url} alt="product" />
                         </div>
                         <div className="product-text">
-                          <h3>{el.product.title}</h3>
-                          <p>{el.product.description}</p>
-                          <p>{el.quantity}x</p>
+                          <h3>{el.product?.title}</h3>
+                          <p>{el.product?.description}</p>
+                          <p>{el?.quantity}x</p>
                         </div>
                         <div>
                           {
-                            <p>{el.quantity * el.product.price} sum</p>
+                            <p>{el?.quantity * el.product?.price} sum</p>
                           }
                         </div>
                       </div>
